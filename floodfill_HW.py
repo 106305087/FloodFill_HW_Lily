@@ -11,7 +11,25 @@ board = [
     "....##############....",
 ]
 
+# Check board length before execute the function.
+def check_board_row_lengths(input_board: List[str]) -> bool:
+    # Get the length of the first row
+    first_row_length = len(input_board[0])
 
+    # Check if all rows have the same length
+    for row in input_board:
+        if len(row) != first_row_length:
+            return False
+
+    return True
+    
+# Check if all rows have the same length
+if check_board_row_lengths(board):
+    print("All rows have the same length.")
+else:
+    print("Rows have different lengths.")
+
+# Main function
 def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> List[str]:
     def fill(x, y):
         if (
